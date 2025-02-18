@@ -9,6 +9,13 @@ class LogEvent {
 public:
     LogEvent() = default;
 
+    const char* getFile() const;
+    int32_t getLine() const;
+    uint32_t getElapse() const;
+    uint32_t getThreadId() const;
+    uint32_t getFiberId() const;
+    uint64_t getTime() const;
+    const std::string& getContent() const;
 private:
     const char* m_file = nullptr;
     int32_t m_line = 0;

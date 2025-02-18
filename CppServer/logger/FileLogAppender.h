@@ -5,7 +5,6 @@
 #include "logger/LogEvent.h"
 
 #include <string>
-#include <sstream>
 #include <fstream>
 
 namespace logger {
