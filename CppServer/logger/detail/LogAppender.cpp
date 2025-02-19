@@ -1,6 +1,6 @@
 #include "logger/LogAppender.h"
 
-namespace logger::detail {
+namespace logger {
 void LogAppender::setFormatter(const std::shared_ptr<LogFormatter>& formatter)
 {
     m_formatter = formatter;

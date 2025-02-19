@@ -1,6 +1,6 @@
 #include "logger/Logger.h"
 
-namespace logger::detail {
+namespace logger {
 Logger::Logger(const std::string& name)
     : m_name(name)
 {
@@ -16,38 +16,43 @@ LogLevel Logger::getLogLevel()
     return m_level;
 }
 
-void Logger::log(LogLevel level, const std::shared_ptr<LogEvent>& event)
+std::string Logger::getName()
+{
+    return m_name;
+}
+
+void Logger::log(const LogLevel level, const std::shared_ptr<LogEvent>& event)
 {
     if (level >= m_level) {
         for (const auto& appender : m_appenders) {
-            appender->log(level, event);
+            appender->log(std::shared_ptr<Logger>(this), level, event);
         }
     }
 }
 
 void Logger::debug(const std::shared_ptr<LogEvent>& event)
 {
-    debug(LogLevel::DEBUG, event);
+    // debug(LogLevel::DEBUG, event);
 }
 
 void Logger::info(const std::shared_ptr<LogEvent>& event)
 {
-    debug(LogLevel::INFO, event);
+    // debug(LogLevel::INFO, event);
 }
 
 void Logger::warn(const std::shared_ptr<LogEvent>& event)
 {
-    debug(LogLevel::WARN, event);
+    // debug(LogLevel::WARN, event);
 }
 
 void Logger::error(const std::shared_ptr<LogEvent>& event)
 {
-    debug(LogLevel::ERROR, event);
+    // debug(LogLevel::ERROR, event);
 }
 
 void Logger::fatal(const std::shared_ptr<LogEvent>& event)
 {
-    debug(LogLevel::FATAL, event);
+    // debug(LogLevel::FATAL, event);
 }
 
 void Logger::addAppender(const std::shared_ptr<LogAppender>& appender)

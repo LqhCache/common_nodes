@@ -1,6 +1,6 @@
 #include "logger/LogEvent.h"
 
-namespace logger::detail {
+namespace logger {
 const char* LogEvent::getFile() const
 {
     return m_file;

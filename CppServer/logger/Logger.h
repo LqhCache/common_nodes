@@ -12,13 +12,15 @@
 namespace logger {
 using LogLevel = common::LogLevel;
 
+class LogAppender;
 class Logger {
 public:
     Logger(const std::string& name = "root");
-    void log(LogLevel level, const std::shared_ptr<LogEvent>& event);
+    void log(const LogLevel level, const std::shared_ptr<LogEvent>& event);
 
     void setLogLevel(const LogLevel level);
     LogLevel getLogLevel();
+    std::string getName();
 
     void debug(const std::shared_ptr<LogEvent>& event);
     void info(const std::shared_ptr<LogEvent>& event);
